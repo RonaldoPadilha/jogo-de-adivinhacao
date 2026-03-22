@@ -9,7 +9,7 @@
     Output (Saída de Dados)
         O sistema informará o usuário se o mesmo acertou ou não, podendo incluir dicas sobre a proximidade do "chute".
 */
-// 2. Nosso jogo deve gerar um número aleatório
+// 3. Nosso jogo deve validar a tentativa do jogador e exibir uma mensagem de feedback.
 using System.Security.Cryptography; // banco de dados para gerar número aleatório
 
 Console.Clear(); // Limpa o terminal
@@ -19,11 +19,23 @@ Console.WriteLine("------------------------------------------------");
 
 Console.WriteLine();
 Console.Write("Digite um número: ");
-String strNumeroDigitado = Console.ReadLine();
+int numeroDigitado = Convert.ToInt32(Console.ReadLine());
 
-// para gerar/mostrar número aleatório
-int numeroAleatorio = RandomNumberGenerator.GetInt32(1, 21); // .GetInt32(1,21) múmero minímo e número máximo (que é exclusivo), dos números que serão gerados.
+int numeroAleatorio = RandomNumberGenerator.GetInt32(1, 21);
 
-Console.WriteLine("O número aleatório foi: " + numeroAleatorio);
+if (numeroDigitado == numeroAleatorio)
+{
+    Console.WriteLine("Parabéns, você acertou! O número era " + numeroAleatorio);
+}
+
+else if (numeroDigitado > numeroAleatorio)
+{
+    Console.WriteLine("O número digitado foi maior que o número secreto!");
+}
+
+else
+{
+    Console.WriteLine("O número digitado foi menor que o número secreto!");
+}
 
 Console.ReadLine(); // Para não fechar sozinho
